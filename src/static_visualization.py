@@ -8,7 +8,8 @@ import streamlit as st
 
 
 def static_insights():
-        df = pd.read_csv("data\crime_by_district_rt.csv")
+        url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/crime_by_district_rt.csv"
+        df = pd.read_csv(url)
         df.head()
 
         df=pd.DataFrame(df)
