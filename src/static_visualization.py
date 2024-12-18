@@ -56,16 +56,19 @@ def static_insights():
 
         """# 2. Total crime over Years"""
 
-        yearly_crime = df.groupby('Year')['Total crimes'].sum().reset_index()
+        # category_filter = st.selectbox("Select Category", options=df['STATE/UT'].unique())
+        crime_filter = st.selectbox("Select Crime", options= ['Total crimes' , 'Murder'])
+        x_filter = st.selectbox("Select X Axis", options= ['STATE/UT' , 'Year'] )
+        yearly_crime = df.groupby(x_filter)[crime_filter ].sum().reset_index()
         yearly_crime
 
         # Visualise total crime over years
 
         fig = plt.figure(figsize=(10, 4))
-        sns.lineplot(x='Year', y='Total crimes', data=yearly_crime, color='teal' , marker='o')
+        sns.lineplot(x=x_filter, y=crime_filter, data=yearly_crime, color='teal' , marker='o')
         plt.title('Total Crime Over Years')
-        plt.xlabel('Year')
-        plt.ylabel('Total Crimes')
+        plt.xlabel(x_filter)
+        plt.ylabel(crime_filter )
         st.pyplot(fig)
 
         """# 3. Total crimes against SCs as per year"""
