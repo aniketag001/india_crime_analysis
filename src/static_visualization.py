@@ -1,5 +1,3 @@
-
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -30,12 +28,12 @@ def static_insights():
 
         # Visualize Top 10 States with Highest Crimes
 
-        fig = plt.figure(figsize=(10, 4))
         sns.barplot(x="STATE/UT", y="Total crimes", data=state_crime.head(10), palette="viridis")
         plt.title("Top 10 States with Highest Crimes")
         plt.xlabel("State")
         plt.ylabel("Total Crimes")
         plt.xticks(rotation=90)
+        plt.show()
         st.pyplot(fig)
 
         """# 2. Total crime over Years"""
@@ -60,40 +58,97 @@ def static_insights():
         yearly_crime_against_SC = df.groupby('Year')['Other Crimes Against SCs'].sum().reset_index()
         yearly_crime_against_SC
 
+        # Visualise total crime over years
+
+        sns.lineplot(x='Year', y='Other Crimes Against SCs', data=yearly_crime_against_SC, color='purple' , marker='o')
+        plt.title('Total crimes against SCs as per year')
+        plt.xlabel('Year')
+        plt.ylabel('Other Crimes Against SCs')
+        plt.show()
+        st.pyplot(fig)
+
         """# 4. Rights under Prevention of atrocities (POA) Act and Protection of Civil Rights (PCR) Act over years"""
 
         rights = df[['Year' ,'Prevention of atrocities (POA) Act' , 'Protection of Civil Rights (PCR) Act']].groupby('Year').sum().reset_index()
         rights
 
-        """# 5. Crimes in top 5 states"""
+        # Visualise  Prevention of Atrocities (POA) Act and Protection of Civil Rights (PCR) Act over years
 
-        top_5 = df.groupby('STATE/UT')['Total crimes'].sum().sort_values(ascending = False).reset_index().head(5)
-        top_5
+        plt.figure(figsize=(10, 7))
 
-        """# 6. Top 5 Districts in Uttar Pradesh with crimes"""
+        sns.lineplot(data=rights, x="Year", y="Protection of Civil Rights (PCR) Act", marker='o', label="PCR Act", color='orange', linewidth=2.5, markersize=10)
+        sns.lineplot(data=rights, x="Year", y="Prevention of atrocities (POA) Act", marker='*', label="POA Act", color='green', linewidth=2.5, markersize=13)
 
-        UP = df[df['STATE/UT'] == 'Uttar Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        UP
+        plt.title('Crimes under POA Act and PCR Act Over the Years')
+        plt.xlabel('Year')
+        plt.ylabel('Crime Counts')
+        plt.legend(title='Crime Acts', frameon=True)
+        plt.grid()
+        plt.tight_layout()
+        plt.show()
+        st.pyplot(fig)
 
-        """# 7. Top 5 Districts in Rajasthan with crimes"""
+        """# 5. Analysis for each Crime Type"""
 
-        rajasthan = df[df['STATE/UT'] == 'Rajasthan'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        rajasthan
+        plt.figure(figsize=(12, 10))
+        sns.boxplot(data=df[all_crimes])
+        plt.title('Distribution of Different Crime Types')
+        plt.xticks(rotation=90)
+        plt.xlabel('Crime Type')
+        plt.ylabel('Crime Counts')
+        plt.grid()
+        plt.show()
+        st.pyplot(fig)
 
-        """# 8. Top 5 Districts in Madhya Pradesh with crimes"""
+        """# 6. Analysis of Common Crime Type over Years"""
 
-        MP = df[df['STATE/UT'] == 'Madhya Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        MP
+        # List of crimes
+        crimes = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 
+                  'Dacoity', 'Robbery', 'Arson', 'Hurt', 'Other Crimes Against SCs']
 
-        """# 9. Top 5 Districts in Andhra Pradesh with crimes"""
+        # Categorize crimes into violent and non-violent
+        violent_crimes = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 
+                          'Dacoity', 'Robbery', 'Arson', 'Hurt']
 
-        AP = df[df['STATE/UT'] == 'Andhra Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        AP
+        non_violent_crimes = ['Other Crimes Against SCs']
 
-        """# 10. Top 5 Districts in Bihar with crimes"""
 
-        bihar = df[df['STATE/UT'] == 'Bihar'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        bihar
+        plt.figure(figsize=(14, 8))
+
+        # Plot violent crimes
+        for crime in violent_crimes:
+            sns.lineplot(data=df.groupby('Year')[crime].sum().reset_index(), 
+                         x='Year', y=crime, marker='o', label=crime, color='red')
+
+        # Plot non-violent crimes
+        for crime in non_violent_crimes:
+            sns.lineplot(data=df.groupby('Year')[crime].sum().reset_index(), 
+                         x='Year', y=crime, marker='o', label=crime, color='blue')
+
+        # Title and labels
+        plt.title('Common Crime Types Over the Years')
+        plt.xlabel('Year')
+        plt.ylabel('Crime Counts')
+        plt.legend(title='Crime Types')
+        plt.grid()
+        plt.show()
+        st.pyplot(fig)
+
+        df['STATE/UT'] = df['STATE/UT'].str.strip().str.title()
+        df['DISTRICT'] = df['DISTRICT'].str.strip().str.title()
+        
+        name_mapping = {
+            'A&N Islands': 'A & N Islands',
+            'D&N Haveli': 'D & N Haveli',
+            'Delhi Ut': 'Delhi'
+            }
+        cols = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity',
+                'Robbery', 'Arson', 'Hurt', 'Prevention of atrocities (POA) Act',
+                'Protection of Civil Rights (PCR) Act', 'Other Crimes Against SCs']
+        df['STATE/UT'] = df['STATE/UT'].replace(name_mapping)
+        merged_state = df.groupby('STATE/UT')[cols].sum().reset_index()
+        print(df['STATE/UT'].unique())
+
 
         df.isna().sum()
 
