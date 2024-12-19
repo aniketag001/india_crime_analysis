@@ -17,7 +17,7 @@ git push
 <br>
 
 ## Streamlit
-### How to run test your code with Streamlit Locally?
+### How to test your code with Streamlit Locally?
 ```
 conda activate .conda/
 streamlit run src/app.py

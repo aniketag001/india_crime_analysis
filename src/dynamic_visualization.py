@@ -5,30 +5,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-
+from utils import clean_data, load_data
 
 def dynamic_insights():
-        url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/crime_by_district_rt.csv"
-        df = pd.read_csv(url)
-        df.head()
+        
+        df = load_data()
+        df = clean_data(df)
 
-        df=pd.DataFrame(df)
-
-        df.drop_duplicates(inplace=True)
-
-        # """# Checking if duplicates are dropped or not"""
-
-        df.duplicated().sum()
-
-        # """# Display Descriptive Stats for numerical columns of crimes only"""
-
-        df.drop(columns=['Year']).describe()      #here we are dropping year column
-
-        df.replace(to_replace=' ', value='', regex=True)
-
-        # """# Adding a new column as "Total Crimes" in the Dataset"""
-
-        df = df.reset_index(drop = True)
         df["Total crimes"] = df.iloc[:, 3:13].sum(axis=1)
 
         df.head()
