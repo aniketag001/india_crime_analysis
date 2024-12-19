@@ -7,5 +7,5 @@ kpis, dashboard = st.tabs(["KPIs", "Dashboard"])
 
 with kpis:
     static_insights()
-with dashboard
+with dashboard:
     dynamic_insights()
