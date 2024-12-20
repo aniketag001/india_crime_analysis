@@ -5,38 +5,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-from utils import clean_data, load_data
-
+from utils import load_crime_data, load_literacy_data, load_population_data
+from static_visualization import kpi1, kpi2, kpi3, kpi4
 
 def static_insights():
         
-        df = load_data()
-        df = clean_data(df)
+        df = load_crime_data()
+        literacy_df = load_literacy_data()
+        population_df = load_population_data()
 
-        df["Total crimes"] = df.iloc[:, 3:13].sum(axis=1)
+        # df["Total crimes"] = df.iloc[:, 3:13].sum(axis=1)
+        # all_crimes = ['Murder', 'Assault on women','Kidnapping and Abduction', 'Dacoity', 'Robbery', 'Arson', 'Hurt','Prevention of atrocities (POA) Act' , 'Protection of Civil Rights (PCR) Act', 'Other Crimes Against SCs']
 
-        df.head()
-
-        all_crimes = ['Murder', 'Assault on women','Kidnapping and Abduction', 'Dacoity', 'Robbery', 'Arson', 'Hurt','Prevention of atrocities (POA) Act' , 'Protection of Civil Rights (PCR) Act', 'Other Crimes Against SCs']
-
-        print(all_crimes)
-
-        print(type(all_crimes))
-
-        """# 1. Calculating Total Crimes as per State (from highest to lowest)"""
-
-        state_crime = df.groupby('STATE/UT')['Total crimes'].sum().sort_values(ascending = False).reset_index()
-        state_crime
-
-        # Visualize Top 10 States with Highest Crimes
-
-        fig = plt.figure(figsize=(10, 4))
-        sns.barplot(x="STATE/UT", y="Total crimes", data=state_crime.head(10), palette="viridis")
-        plt.title("Top 10 States with Highest Crimes")
-        plt.xlabel("State")
-        plt.ylabel("Total Crimes")
-        plt.xticks(rotation=90)
-        st.pyplot(fig)
+        kpi1(df)
+        kpi2(df)
+        kpi3(literacy_df)
+        kpi4(population_df)
 
         """# 2. Total crime over Years"""
 
@@ -55,66 +39,66 @@ def static_insights():
         plt.ylabel(crime_filter )
         st.pyplot(fig)
 
-        """# 3. Total crimes against SCs as per year"""
+        # """# 3. Total crimes against SCs as per year"""
 
-        yearly_crime_against_SC = df.groupby('Year')['Other Crimes Against SCs'].sum().reset_index()
-        yearly_crime_against_SC
+        # yearly_crime_against_SC = df.groupby('Year')['Other Crimes Against SCs'].sum().reset_index()
+        # yearly_crime_against_SC
 
-        """# 4. Rights under Prevention of atrocities (POA) Act and Protection of Civil Rights (PCR) Act over years"""
+        # """# 4. Rights under Prevention of atrocities (POA) Act and Protection of Civil Rights (PCR) Act over years"""
 
-        rights = df[['Year' ,'Prevention of atrocities (POA) Act' , 'Protection of Civil Rights (PCR) Act']].groupby('Year').sum().reset_index()
-        rights
+        # rights = df[['Year' ,'Prevention of atrocities (POA) Act' , 'Protection of Civil Rights (PCR) Act']].groupby('Year').sum().reset_index()
+        # rights
 
-        """# 5. Crimes in top 5 states"""
+        # """# 5. Crimes in top 5 states"""
 
-        top_5 = df.groupby('STATE/UT')['Total crimes'].sum().sort_values(ascending = False).reset_index().head(5)
-        top_5
+        # top_5 = df.groupby('STATE/UT')['Total crimes'].sum().sort_values(ascending = False).reset_index().head(5)
+        # top_5
 
-        """# 6. Top 5 Districts in Uttar Pradesh with crimes"""
+        # """# 6. Top 5 Districts in Uttar Pradesh with crimes"""
 
-        UP = df[df['STATE/UT'] == 'Uttar Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        UP
+        # UP = df[df['STATE/UT'] == 'Uttar Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
+        # UP
 
-        """# 7. Top 5 Districts in Rajasthan with crimes"""
+        # """# 7. Top 5 Districts in Rajasthan with crimes"""
 
-        rajasthan = df[df['STATE/UT'] == 'Rajasthan'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        rajasthan
+        # rajasthan = df[df['STATE/UT'] == 'Rajasthan'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
+        # rajasthan
 
-        """# 8. Top 5 Districts in Madhya Pradesh with crimes"""
+        # """# 8. Top 5 Districts in Madhya Pradesh with crimes"""
 
-        MP = df[df['STATE/UT'] == 'Madhya Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        MP
+        # MP = df[df['STATE/UT'] == 'Madhya Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
+        # MP
 
-        """# 9. Top 5 Districts in Andhra Pradesh with crimes"""
+        # """# 9. Top 5 Districts in Andhra Pradesh with crimes"""
 
-        AP = df[df['STATE/UT'] == 'Andhra Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        AP
+        # AP = df[df['STATE/UT'] == 'Andhra Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
+        # AP
 
-        """# 10. Top 5 Districts in Bihar with crimes"""
+        # """# 10. Top 5 Districts in Bihar with crimes"""
 
-        bihar = df[df['STATE/UT'] == 'Bihar'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        bihar
+        # bihar = df[df['STATE/UT'] == 'Bihar'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
+        # bihar
 
-        df.isna().sum()
+        # df.isna().sum()
 
-        df.dropna(inplace=True)
+        # df.dropna(inplace=True)
 
-        print(f"Duplicates : {df.duplicated().sum()}")
+        # print(f"Duplicates : {df.duplicated().sum()}")
 
-        df.drop_duplicates(inplace=True)
+        # df.drop_duplicates(inplace=True)
 
-        len(list(df["STATE/UT"].unique()))
+        # len(list(df["STATE/UT"].unique()))
 
-        print(f"Duplicates : {df.duplicated().sum()}")
+        # print(f"Duplicates : {df.duplicated().sum()}")
 
-        df['STATE/UT'] = df['STATE/UT'].str.title()
-        df["STATE/UT"].unique()
+        # df['STATE/UT'] = df['STATE/UT'].str.title()
+        # df["STATE/UT"].unique()
 
-        df.describe()
+        # df.describe()
 
-        """# Total number of each crime commited by state
+        # """# Total number of each crime commited by state
 
-        """
+        # """
 
         cols = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity',
                 'Robbery', 'Arson', 'Hurt', 'Prevention of atrocities (POA) Act',
@@ -125,23 +109,6 @@ def static_insights():
         plt.suptitle('Number of each cases in each states')
         plt.xlabel('Types of Crimes')
         plt.ylabel('States')
-        st.pyplot(fig)
-
-        """# write code to find top 5 district with higher crime rates and show in bar chart"""
-
-        crime_type_cols = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery',
-                        'Arson', 'Hurt', 'Prevention of atrocities (POA) Act', 'Protection of Civil Rights (PCR) Act',
-                        'Other Crimes Against SCs']
-        #sum of all crime types for each district
-        total_crimes_per_district = df.groupby('DISTRICT')[crime_type_cols].sum().sum(axis=1)
-        #top 5 districts with higher crime rates
-        top_districts = total_crimes_per_district.nlargest(5)
-        fig = plt.figure(figsize=(10, 6))
-        plt.bar(top_districts.index, top_districts.values)
-        plt.xlabel('District')
-        plt.ylabel('Total Crimes')
-        plt.title('Top 5 Districts with Higher Crime Rates')
-        plt.xticks(rotation=45, ha='right')
         st.pyplot(fig)
 
         """# Total Crimes per Type:"""

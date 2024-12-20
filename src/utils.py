@@ -1,15 +1,35 @@
 
 import pandas as pd
 
-def load_data():
-    url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/crime_by_district_rt.csv"
+crime_columns = [
+    'Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery',
+    'Arson', 'Hurt', 'Prevention of atrocities (POA) Act', 'Protection of Civil Rights (PCR) Act',
+    'Other Crimes Against SCs'
+]
+
+def load_population_data():
+    url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/india_literacy_rate.csv"
     df = pd.read_csv(url)
-    print(df.head())
+    df = pd.DataFrame(df)
+    return df
+
+def load_literacy_data():
+    url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/india_literacy_rate.csv"
+    df = pd.read_csv(url)
     df=pd.DataFrame(df)
     return df
 
+def load_crime_data():
+    url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/crime_by_state_rt.csv"
+    df = pd.read_csv(url)
+    df = pd.DataFrame(df)
+    df.loc[:, crime_columns] = df[crime_columns].apply(pd.to_numeric, errors='coerce')
+    df.loc[:, 'Total crimes'] = data.loc[:, crime_columns].sum(axis=1)
+    df = clean_crime_data(df)
+    return df
 
-def clean_data(df):
+
+def clean_crime_data(df):
     df.drop_duplicates(inplace=True)
 
     # """# Checking if duplicates are dropped or not"""
