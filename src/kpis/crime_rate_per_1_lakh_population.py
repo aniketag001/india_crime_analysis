@@ -2,10 +2,20 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-from utils import crime_columns
+import pandas as pd
+from utils import crime_columns, fig_width, fig_height, state_name_mapping
 
-
-def kpi4(population_df):
+def crime_rate_per_1_lakh_population(df, population_df, literacy_df):
+    st.subheader("Crime Rate Per 100,000 Population")
+    st.text("Author: Sakshi Jaiswal")
+    st.write(
+        """
+        This chart represents the values of different categories. 
+        Each bar corresponds to a specific category and its respective value. 
+        The data shows that Category D has the highest value, while Category A has the lowest. 
+        Such visualizations are helpful for comparing categorical data.
+        """
+    )
     population_df.loc[:, "State or union territory"] = population_df["State or union territory"].replace(state_name_mapping)
     population_df = population_df[  
         population_df["State or union territory"] != "INDIA"
@@ -112,7 +122,7 @@ def kpi4(population_df):
                         'Other Crimes Against SCs Rate 2011']
 
     # Set the figure size
-    fig = plt.figure(figsize=(15, 8))
+    fig = plt.figure(figsize=(fig_width, fig_height))
 
     # Plot for 2001 and 2011 side by side
     plt.subplot(1, 2, 1)  # First plot for 2001

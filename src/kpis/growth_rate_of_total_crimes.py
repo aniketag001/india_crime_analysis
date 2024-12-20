@@ -5,7 +5,7 @@ import streamlit as st
 from utils import fig_width, fig_height
 
 
-def growth_rate_of_total_crimes(df):
+def growth_rate_of_total_crimes(df, population_df, literacy_df):
 
     st.subheader("Growth Rate of Total Crimes by State/UT Across Years")
     st.text("Author: Sakshi Jaiswal")

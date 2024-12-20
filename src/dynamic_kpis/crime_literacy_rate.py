@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-from utils import crime_columns
+from utils import crime_columns, state_name_mapping
 import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.linear_model import LinearRegression
@@ -87,42 +87,4 @@ def crime_literacy_rate(df, literacy_df):
     st.plotly_chart(fig_2011)
 
 
-
-state_name_mapping = {
-    "Andhra Pradesh": "ANDHRA PRADESH",
-    "Arunachal Pradesh": "ARUNACHAL PRADESH",
-    "Assam": "ASSAM",
-    "Bihar": "BIHAR",
-    "Chhattisgarh": "CHHATTISGARH",
-    "Goa": "GOA",
-    "Gujarat": "GUJARAT",
-    "Haryana": "HARYANA",
-    "Himachal Pradesh": "HIMACHAL PRADESH",
-    "Jammu & Kashmir": "JAMMU & KASHMIR",
-    "Jharkhand": "JHARKHAND",
-    "Karnataka": "KARNATAKA",
-    "Kerala": "KERALA",
-    "Madhya Pradesh": "MADHYA PRADESH",
-    "Maharashtra": "MAHARASHTRA",
-    "Manipur": "MANIPUR",
-    "Meghalaya": "MEGHALAYA",
-    "Mizoram": "MIZORAM",
-    "Nagaland": "NAGALAND",
-    "Odisha": "ODISHA",
-    "Punjab": "PUNJAB",
-    "Rajasthan": "RAJASTHAN",
-    "Sikkim": "SIKKIM",
-    "Tamil Nadu": "TAMIL NADU",
-    "Tripura": "TRIPURA",
-    "Uttar Pradesh": "UTTAR PRADESH",
-    "Uttarakhand": "UTTARAKHAND",
-    "West Bengal": "WEST BENGAL",
-    "A & N Islands": "A & N ISLANDS",
-    "Chandigarh": "CHANDIGARH",
-    "D & N Haveli": "D & N HAVELI",
-    "Daman & Diu": "DAMAN & DIU",
-    "Lakshadweep": "LAKSHADWEEP",
-    "NCT of Delhi": "DELHI",
-    "Puducherry": "PUDUCHERRY",
-}
-
+ 

@@ -51,3 +51,42 @@ def clean_crime_data(df):
     df = df.reset_index(drop = True)
 
     return df
+
+    
+state_name_mapping = {
+"Andhra Pradesh": "ANDHRA PRADESH",
+"Arunachal Pradesh": "ARUNACHAL PRADESH",
+"Assam": "ASSAM",
+"Bihar": "BIHAR",
+"Chhattisgarh": "CHHATTISGARH",
+"Goa": "GOA",
+"Gujarat": "GUJARAT",
+"Haryana": "HARYANA",
+"Himachal Pradesh": "HIMACHAL PRADESH",
+"Jammu & Kashmir": "JAMMU & KASHMIR",
+"Jharkhand": "JHARKHAND",
+"Karnataka": "KARNATAKA",
+"Kerala": "KERALA",
+"Madhya Pradesh": "MADHYA PRADESH",
+"Maharashtra": "MAHARASHTRA",
+"Manipur": "MANIPUR",
+"Meghalaya": "MEGHALAYA",
+"Mizoram": "MIZORAM",
+"Nagaland": "NAGALAND",
+"Odisha": "ODISHA",
+"Punjab": "PUNJAB",
+"Rajasthan": "RAJASTHAN",
+"Sikkim": "SIKKIM",
+"Tamil Nadu": "TAMIL NADU",
+"Tripura": "TRIPURA",
+"Uttar Pradesh": "UTTAR PRADESH",
+"Uttarakhand": "UTTARAKHAND",
+"West Bengal": "WEST BENGAL",
+"A & N Islands": "A & N ISLANDS",
+"Chandigarh": "CHANDIGARH",
+"D & N Haveli": "D & N HAVELI",
+"Daman & Diu": "DAMAN & DIU",
+"Lakshadweep": "LAKSHADWEEP",
+"NCT of Delhi": "DELHI",
+"Puducherry": "PUDUCHERRY",
+}
