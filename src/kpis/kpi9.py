@@ -22,5 +22,4 @@ def kpi9(df):
         plt.xticks(df['Year'], rotation=45)  # Rotate x-axis labels for better readability
         plt.grid()  # Add grid for better readability
         plt.tight_layout()  # Adjust layout to prevent overlap
-        plt.show()
         st.pyplot(fig)
