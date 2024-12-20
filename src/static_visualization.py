@@ -20,7 +20,7 @@ def static_insights():
         crime_rates_by_category(df)
         total_crime_over_years(df)
         top_10_states_highest_crime(df)
-        each_crime_category_over_years(df)
+        # each_crime_category_over_years(df)
         kpi3(literacy_df)
 
         kpi4(population_df)
