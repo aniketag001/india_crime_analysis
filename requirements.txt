@@ -7,3 +7,5 @@ streamlit==1.41.1
 plotly==5.24.1
 scikit-learn==1.6.0
 ipywidgets==8.1.5
+geopy==2.4.1
+folium==0.19.2
