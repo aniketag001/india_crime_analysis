@@ -5,6 +5,7 @@ import streamlit as st
 
 
 def kpi1(df):
+    print("sdfd")
     yearly_crime = df.groupby(['Year', 'STATE/UT'])['Total crimes'].sum().reset_index()
     yearly_crime['Growth Rate (%)'] = yearly_crime.groupby('STATE/UT')['Total crimes'].pct_change() * 100
     growth_rate_pivot = yearly_crime.pivot(index='STATE/UT', columns='Year', values='Growth Rate (%)')

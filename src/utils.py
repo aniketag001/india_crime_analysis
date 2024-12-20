@@ -5,10 +5,7 @@ crime_columns = [
     'Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery',
     'Arson', 'Hurt', 'Prevention of atrocities (POA) Act', 'Protection of Civil Rights (PCR) Act',
     'Other Crimes Against SCs'
-]
-
-df = df.reset_index(drop = True)
-df["Total crimes"] = df.iloc[:, 3:13].sum(axis=1)
+] 
 
 
 def load_population_data():
@@ -27,9 +24,9 @@ def load_crime_data():
     url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/crime_by_state_rt.csv"
     df = pd.read_csv(url)
     df = pd.DataFrame(df)
-    df.loc[:, crime_columns] = df[crime_columns].apply(pd.to_numeric, errors='coerce')
-    df.loc[:, 'Total crimes'] = data.loc[:, crime_columns].sum(axis=1)
     df = clean_crime_data(df)
+    df.loc[:, crime_columns] = df[crime_columns].apply(pd.to_numeric, errors='coerce')
+    df.loc[:, 'Total crimes'] = df.loc[:, crime_columns].sum(axis=1)
     return df
 
 
