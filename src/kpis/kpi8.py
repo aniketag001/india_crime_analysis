@@ -5,17 +5,19 @@ import streamlit as st
 
 
 def kpi8(df):
-    """# Calculating Total Crimes as per State (from highest to lowest)"""
+    """# Analysis of Common Crime Type over Years"""
 
-    state_crime = df.groupby('STATE/UT')['Total crimes'].sum().sort_values(ascending = False).reset_index()
-    state_crime
+    # Analysis of common crime type over years
+    crimes = ['Murder', 'Assault on women','Kidnapping and Abduction', 'Dacoity', 'Robbery', 'Arson', 'Hurt', 'Other Crimes Against SCs']
 
-    # Visualize Top 10 States with Highest Crimes
+    plt.figure(figsize=(12, 8))
+    for crime in crimes:
+        sns.lineplot(data=df.groupby('Year')[crime].sum().reset_index(), x='Year', y=crime, marker='o', label=crime)
 
-    fig = plt.figure(figsize=(10, 4))
-    sns.barplot(x="STATE/UT", y="Total crimes", data=state_crime.head(10), palette="viridis")
-    plt.title("Top 10 States with Highest Crimes")
-    plt.xlabel("State")
-    plt.ylabel("Total Crimes")
-    plt.xticks(rotation=90)
+    fig = plt.figure(figsize=(10, 7))
+    plt.title('Common Crime Types Over the Years')
+    plt.xlabel('Year')
+    plt.ylabel('Crime Counts')
+    plt.legend()
+    plt.grid()
     st.pyplot(fig)
