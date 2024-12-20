@@ -13,7 +13,7 @@ def crime_trends_over_years(df):
     unique_states = df['STATE/UT'].unique()
 
     # Create a dropdown widget for state selection
-    selected_state = st.selectbox("Select State:", options=unique_states)  
+    selected_state = st.selectbox("Select State For Each Crime", options=unique_states)  
    
     state_df = df[df['STATE/UT'] == selected_state]
     total_crimes_per_year = state_df.groupby('Year')[crime_columns].sum().sum(axis=1)
