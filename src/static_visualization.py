@@ -13,6 +13,7 @@ from kpis.growth_rate_of_total_crimes import growth_rate_of_total_crimes
 from kpis.yearly_crime_type_correlations import yearly_crime_type_correlations
 from kpis.crime_rate_per_1_lakh_population import crime_rate_per_1_lakh_population
 from kpis.crime_trends_over_years import crime_trends_over_years
+from kpis.total_crimes_accross_india import total_crimes_accross_india
 
 def static_insights(): 
 
@@ -23,6 +24,7 @@ def static_insights():
      
 
         charts = [
+                total_crimes_accross_india,
                 top_10_states_highest_crime, 
                 growth_rate_of_total_crimes,
                 yearly_crime_type_correlations, 
