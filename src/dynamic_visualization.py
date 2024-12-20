@@ -25,7 +25,7 @@ def dynamic_insights():
         print(type(all_crimes))
 
 
-#Crime Trends over Years w.r.t State
+#1.Crime Trends over Years w.r.t State
 
 crime_type_cols = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery', 
                   'Arson', 'Hurt', 'Prevention of atrocities (POA) Act', 'Protection of Civil Rights (PCR) Act', 
@@ -60,7 +60,7 @@ def update_chart(state):
 widgets.interactive(update_chart, state=state_dropdown)
 
 
-#crime types and counts in years w.r.t State
+#2.crime types and counts in years w.r.t State
 crime_type_cols = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery',
                   'Arson', 'Hurt', 'Prevention of atrocities (POA) Act', 'Protection of Civil Rights (PCR) Act',
                   'Other Crimes Against SCs']
@@ -108,3 +108,38 @@ def update_chart(state, year):
 # Link the widgets to the chart update function
 widgets.interactive(update_chart, state=state_dropdown, year=year_slider)
 
+
+
+#3.States with Top 5 Crime Types
+crime_type_cols = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery',
+                  'Arson', 'Hurt', 'Prevention of atrocities (POA) Act', 'Protection of Civil Rights (PCR) Act',
+                  'Other Crimes Against SCs']
+
+unique_states = df['STATE/UT'].unique()
+
+# Create a dropdown widget for state selection
+state_dropdown = widgets.Dropdown(
+    options=unique_states,
+    value=unique_states[0],  # Default to the first state
+    description='Select State:'
+)
+
+# Function to update the pie chart based on state selection
+def update_pie_chart(state):
+    # Filter the DataFrame based on the selected state
+    state_df = df[df['STATE/UT'] == state]
+
+    # Calculate the sum of each crime type for the selected state
+    crime_type_sums = state_df[crime_type_cols].sum()
+    crime_type_sums = crime_type_sums[crime_type_sums > 0]
+    if not crime_type_sums.empty:
+      # Select the top 5 crime types with the highest occurrences
+      top_5_crimes = crime_type_sums.nlargest(5)
+      fig = plt.figure(figsize=(8, 8))
+      plt.pie(top_5_crimes, labels=top_5_crimes.index, autopct='%1.1f%%', startangle=140)
+      plt.title(f"Top 5 Crime Types in {state}")
+      st.pyplot()
+    else:
+        print(f"No data found for {state} for crime types")
+# Link the dropdown widget to the chart update function
+widgets.interactive(update_pie_chart, state=state_dropdown)
