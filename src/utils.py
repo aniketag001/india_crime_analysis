@@ -1,8 +1,11 @@
 
 import pandas as pd
 
-fig_width = 15
-fig_height = 7
+fig_width: int = 15
+fig_height: int = 7
+
+plotly_fig_width: int = 1200
+plotly_fig_height: int = 400
 
 crime_columns = [
     'Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery',

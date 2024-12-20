@@ -1,11 +1,11 @@
 
 import streamlit as st
 import ipywidgets as widgets
-from utils import crime_columns
+from utils import crime_columns, fig_width, fig_height
 import matplotlib.pyplot as plt
 
 
-def crime_types_and_count_over_years(df):
+def crime_types_and_count_over_years(df, population_df, literacy_df):
  
     st.subheader("Crime Types & Count Over Years")
     st.text("Author: Aniket Agarkar")
@@ -26,7 +26,7 @@ def crime_types_and_count_over_years(df):
         # Create a bar chart
 
 
-        fig = plt.figure(figsize=(10, 6))
+        fig = plt.figure(figsize=(fig_width, fig_height))
 
         plt.bar(total_crimes_per_year.index, total_crimes_per_year.values,color = 'Orange')
 

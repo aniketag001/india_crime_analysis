@@ -3,10 +3,10 @@
 
 import streamlit as st
 import ipywidgets as widgets
-from utils import crime_columns
+from utils import crime_columns, fig_width, fig_height
 import matplotlib.pyplot as plt
 
-def crime_trends_over_years(df):
+def crime_trends_over_years(df, population_df, literacy_df):
  
     st.subheader("Each Crime Category over Years")
     st.text("Author: Aniket Agarkar")
@@ -17,7 +17,7 @@ def crime_trends_over_years(df):
    
     state_df = df[df['STATE/UT'] == selected_state]
     total_crimes_per_year = state_df.groupby('Year')[crime_columns].sum().sum(axis=1)
-    fig = plt.figure(figsize=(10, 6))
+    fig = plt.figure(figsize=(fig_width, fig_height))
     plt.plot(total_crimes_per_year.index, total_crimes_per_year.values)
     plt.xlabel('Year')
     plt.ylabel('Total Crimes')

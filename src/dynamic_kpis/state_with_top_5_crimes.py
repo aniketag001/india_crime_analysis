@@ -3,9 +3,10 @@ import streamlit as st
 import ipywidgets as widgets
 from utils import crime_columns
 import matplotlib.pyplot as plt
+from utils import fig_width, fig_height
 
 
-def state_with_top_5_crimes(df):
+def state_with_top_5_crimes(df, population_df, literacy_df):
  
     st.subheader("State With Top 5 Crimes")
     st.text("Author: Aniket Agarkar") 
@@ -16,7 +17,7 @@ def state_with_top_5_crimes(df):
     crime_type_sums = crime_type_sums[crime_type_sums > 0]
     if not crime_type_sums.empty:
         top_5_crimes = crime_type_sums.nlargest(5)
-        fig = plt.figure(figsize=(8, 8))
+        fig = plt.figure(figsize=(fig_width, fig_height))
         plt.pie(top_5_crimes, labels=top_5_crimes.index, autopct='%1.1f%%', startangle=140)
         plt.title(f"Top 5 Crime Types in {selected_state}")
         st.pyplot(fig)

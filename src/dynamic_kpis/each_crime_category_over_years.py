@@ -2,9 +2,9 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+from utils import fig_width, fig_height
 
-
-def each_crime_category_over_years(df):
+def each_crime_category_over_years(df, population_df, literacy_df):
  
  
     st.subheader("Each Crime Category over Years")
@@ -23,7 +23,7 @@ def each_crime_category_over_years(df):
 
             continue  # Skip the 'Year' column
 
-        fig = plt.figure(figsize=(10, 6))  # Create a new figure for each plot
+        fig = plt.figure(figsize=(fig_width, fig_height))  # Create a new figure for each plot
 
         sns.lineplot(x=df['Year'], y=df[x], data=df, marker='o')  # Add markers for better visibility
 
