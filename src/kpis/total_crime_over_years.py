@@ -2,6 +2,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+from utils import fig_width, fig_height
 
 
 def total_crime_over_years(df):
@@ -13,7 +14,7 @@ def total_crime_over_years(df):
     yearly_crime
 
     # Visualise total crime over years
-    fig = plt.figure(figsize=(10, 7))
+    fig = plt.figure(figsize=(fig_width, fig_height))
     sns.lineplot(x='Year', y='Total crimes', data=yearly_crime, color='teal' , marker='o')
     plt.xlabel('Year')
     plt.ylabel('Total Crimes')

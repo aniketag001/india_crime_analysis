@@ -1,6 +1,9 @@
 
 import pandas as pd
 
+fig_width = 15
+fig_height = 7
+
 crime_columns = [
     'Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery',
     'Arson', 'Hurt', 'Prevention of atrocities (POA) Act', 'Protection of Civil Rights (PCR) Act',
@@ -9,7 +12,7 @@ crime_columns = [
 
 
 def load_population_data():
-    url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/india_literacy_rate.csv"
+    url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/population_of_india.csv"
     df = pd.read_csv(url)
     df = pd.DataFrame(df)
     return df
@@ -17,7 +20,7 @@ def load_population_data():
 def load_literacy_data():
     url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/india_literacy_rate.csv"
     df = pd.read_csv(url)
-    df=pd.DataFrame(df)
+    df = pd.DataFrame(df)
     return df
 
 def load_crime_data():

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 import seaborn as sns
 import streamlit as st
-from utils import crime_columns
+from utils import crime_columns, fig_width, fig_height
 
 
 def top_10_states_highest_crime(df):
@@ -21,7 +21,7 @@ def top_10_states_highest_crime(df):
     # Visualize Top 10 States with Highest Crimes
 
 
-    fig = plt.figure(figsize=(10, 4))
+    fig = plt.figure(figsize=(fig_width, fig_height))
 
     sns.barplot(x="STATE/UT", y="Total crimes", data=state_crime.head(10), palette="viridis")
 

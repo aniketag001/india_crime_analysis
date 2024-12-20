@@ -7,10 +7,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.linear_model import LinearRegression
 import numpy as np
+import pandas as pd
 
-def kpi3(literacy_df):
-    literacy_df.loc[:, "Country/ States/ Union Territories Name"] = literacy_df[
-    "Country/ States/ Union Territories Name"
+def crime_literacy_rate(df, literacy_df):
+    st.subheader("Correlation Between Crime Rates and Literacy Rate")
+    st.text("Author: Sakshi Jaiswal")
+    print(literacy_df.columns)
+    literacy_df.loc[:, "Country/ States/ Union Territories Name"] = literacy_df["Country/ States/ Union Territories Name"
 ].replace(state_name_mapping)
     literacy_df = literacy_df[
         literacy_df["Country/ States/ Union Territories Name"] != "INDIA"
@@ -32,7 +35,7 @@ def kpi3(literacy_df):
         "LR-2001": literacy_df["Literacy Rate (Persons) - Total - 2001"],
     }
 
-    literacy_df = pd.dfFrame(literacy_df)
+    literacy_df = pd.DataFrame(literacy_df)
 
     # Step 3: Merge literacy df with crime df
     merged_df = pd.merge(literacy_df, crimes_2001, on="STATE/UT", how="left")
@@ -51,6 +54,7 @@ def kpi3(literacy_df):
 
     # Create scatter plots with regression lines for 2001 and 2011
     # 2001
+    # fig_2001 = plt.figure(figsize=(20, 10))
     fig_2001 = px.scatter(merged_df, x="LR-2001", y="Total crimes 2001", 
                         title="Literacy Rate vs Total Crimes (2001)",
                         labels={"LR-2001": "Literacy Rate (2001)", "Total crimes 2001": "Total Crimes (2001)"})
@@ -78,9 +82,9 @@ def kpi3(literacy_df):
     # Add the regression line to the figure
     fig_2011.add_trace(go.Scatter(x=line_x_2011.flatten(), y=line_y_2011, mode='lines', name='Regression Line', line=dict(color='red')))
 
-    # Show the plots
-    st.pyplot(fig_2001)
-    st.pyplot(fig_2011)
+    # Show the plots 
+    st.plotly_chart(fig_2001)
+    st.plotly_chart(fig_2011)
 
 
 

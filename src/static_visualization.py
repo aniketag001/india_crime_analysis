@@ -9,14 +9,28 @@ from utils import load_crime_data, load_literacy_data, load_population_data
 from kpis.total_crime_over_years import total_crime_over_years
 from kpis.crime_rates_by_category import crime_rates_by_category
 from kpis.top_10_states_highest_crime import top_10_states_highest_crime
+from kpis.growth_rate_of_total_crimes import growth_rate_of_total_crimes
+from kpis.yearly_crime_type_correlations import yearly_crime_type_correlations
 
-def static_insights():
-        print("Welcome")
+def static_insights(): 
+
+
         df = load_crime_data()
         literacy_df = load_literacy_data()
         population_df = load_population_data()
      
-        crime_rates_by_category(df)
-        total_crime_over_years(df)
-        top_10_states_highest_crime(df)
-        
+
+        charts = [
+                top_10_states_highest_crime, 
+                growth_rate_of_total_crimes,
+                yearly_crime_type_correlations, 
+                crime_rates_by_category, 
+                total_crime_over_years
+                ]
+
+        for chart in charts:
+                col1, col2 = st.columns([2, 1])
+                with col1:
+                        chart(df)
+                with col2:
+                        print("") 
