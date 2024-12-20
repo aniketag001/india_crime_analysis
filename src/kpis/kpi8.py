@@ -8,7 +8,7 @@ def kpi8(df):
     """# Analysis of Common Crime Type over Years"""
 
     # Analysis of common crime type over years
-    crimes = ['Murder', 'Assault on women','Kidnapping and Abduction', 'Dacoity', 'Robbery', 'Arson', 'Hurt', 'Other Crimes Against SCs']
+    crimes = ['Murder', 'Assault on women','Kidnapping and Abduction', 'Dacoity', 'Robbery', 'Arson', 'Hurt','Prevention of atrocities (POA) Act','Protection of Civil Rights (PCR) Act', 'Other Crimes Against SCs']
 
     plt.figure(figsize=(12, 8))
     for crime in crimes:
