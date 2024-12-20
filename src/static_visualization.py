@@ -9,7 +9,6 @@ from utils import load_crime_data, load_literacy_data, load_population_data
 from kpis.total_crime_over_years import total_crime_over_years
 from kpis.crime_rates_by_category import crime_rates_by_category
 from kpis.top_10_states_highest_crime import top_10_states_highest_crime
-from kpis.each_crime_category_over_years import each_crime_category_over_years
 
 def static_insights():
         
@@ -20,8 +19,7 @@ def static_insights():
         crime_rates_by_category(df)
         total_crime_over_years(df)
         top_10_states_highest_crime(df)
-        each_crime_category_over_years(df)
-        # kpi3(literacy_df)
+         # kpi3(literacy_df)
 
         # kpi4(population_df)
 
