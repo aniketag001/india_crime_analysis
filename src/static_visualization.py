@@ -11,7 +11,7 @@ from kpis.crime_rates_by_category import crime_rates_by_category
 from kpis.top_10_states_highest_crime import top_10_states_highest_crime
 
 def static_insights():
-        
+        print("Welcome")
         df = load_crime_data()
         literacy_df = load_literacy_data()
         population_df = load_population_data()
