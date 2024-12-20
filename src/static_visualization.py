@@ -1,5 +1,3 @@
-
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,91 +12,12 @@ def static_insights():
         literacy_df = load_literacy_data()
         population_df = load_population_data()
 
-        # df["Total crimes"] = df.iloc[:, 3:13].sum(axis=1)
-        # all_crimes = ['Murder', 'Assault on women','Kidnapping and Abduction', 'Dacoity', 'Robbery', 'Arson', 'Hurt','Prevention of atrocities (POA) Act' , 'Protection of Civil Rights (PCR) Act', 'Other Crimes Against SCs']
-
         kpi1(df)
         kpi2(df)
         kpi3(literacy_df)
         kpi4(population_df)
 
-        """# 2. Total crime over Years"""
 
-        # category_filter = st.selectbox("Select Category", options=df['STATE/UT'].unique())
-        crime_filter = st.selectbox("Select Crime", options= ['Total crimes' , 'Murder'])
-        x_filter = st.selectbox("Select X Axis", options= ['STATE/UT' , 'Year'] )
-        yearly_crime = df.groupby(x_filter)[crime_filter ].sum().reset_index()
-        yearly_crime
-
-        # Visualise total crime over years
-
-        fig = plt.figure(figsize=(10, 4))
-        sns.lineplot(x=x_filter, y=crime_filter, data=yearly_crime, color='teal' , marker='o')
-        plt.title('Total Crime Over Years')
-        plt.xlabel(x_filter)
-        plt.ylabel(crime_filter )
-        st.pyplot(fig)
-
-        # """# 3. Total crimes against SCs as per year"""
-
-        # yearly_crime_against_SC = df.groupby('Year')['Other Crimes Against SCs'].sum().reset_index()
-        # yearly_crime_against_SC
-
-        # """# 4. Rights under Prevention of atrocities (POA) Act and Protection of Civil Rights (PCR) Act over years"""
-
-        # rights = df[['Year' ,'Prevention of atrocities (POA) Act' , 'Protection of Civil Rights (PCR) Act']].groupby('Year').sum().reset_index()
-        # rights
-
-        # """# 5. Crimes in top 5 states"""
-
-        # top_5 = df.groupby('STATE/UT')['Total crimes'].sum().sort_values(ascending = False).reset_index().head(5)
-        # top_5
-
-        # """# 6. Top 5 Districts in Uttar Pradesh with crimes"""
-
-        # UP = df[df['STATE/UT'] == 'Uttar Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        # UP
-
-        # """# 7. Top 5 Districts in Rajasthan with crimes"""
-
-        # rajasthan = df[df['STATE/UT'] == 'Rajasthan'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        # rajasthan
-
-        # """# 8. Top 5 Districts in Madhya Pradesh with crimes"""
-
-        # MP = df[df['STATE/UT'] == 'Madhya Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        # MP
-
-        # """# 9. Top 5 Districts in Andhra Pradesh with crimes"""
-
-        # AP = df[df['STATE/UT'] == 'Andhra Pradesh'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        # AP
-
-        # """# 10. Top 5 Districts in Bihar with crimes"""
-
-        # bihar = df[df['STATE/UT'] == 'Bihar'][['DISTRICT' , 'Year','Total crimes'] + all_crimes].sort_values(by='Total crimes', ascending=False).head(5)
-        # bihar
-
-        # df.isna().sum()
-
-        # df.dropna(inplace=True)
-
-        # print(f"Duplicates : {df.duplicated().sum()}")
-
-        # df.drop_duplicates(inplace=True)
-
-        # len(list(df["STATE/UT"].unique()))
-
-        # print(f"Duplicates : {df.duplicated().sum()}")
-
-        # df['STATE/UT'] = df['STATE/UT'].str.title()
-        # df["STATE/UT"].unique()
-
-        # df.describe()
-
-        # """# Total number of each crime commited by state
-
-        # """
 
         cols = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity',
                 'Robbery', 'Arson', 'Hurt', 'Prevention of atrocities (POA) Act',
@@ -149,5 +68,35 @@ def static_insights():
         plt.ylabel("Total Crimes")
         plt.title("Total Crimes per State/UT")
         plt.xticks(rotation=45, ha='right')
+        plt.tight_layout()
+        st.pyplot(fig)
+
+        # Total crime with its types in number of years
+        crime_type_cols = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery', 
+                  'Arson', 'Hurt', 'Prevention of atrocities (POA) Act', 'Protection of Civil Rights (PCR) Act', 
+                  'Other Crimes Against SCs']
+
+        # Calculate the sum of all crime types for each year
+        total_crimes_year = df.groupby('Year')[crime_type_cols].sum().sum(axis=1)
+
+        # Create a bar chart to visualize crime trends over years
+        fig = plt.figure(figsize=(10, 6))
+        plt.bar(total_crimes_year.index, total_crimes_year.values)
+        plt.xlabel('Year')
+        plt.ylabel('Total Crimes')
+        plt.title('Crime Trends Over Years')
+        plt.grid(True)
+        plt.tight_layout()
+        st.pyplot(fig)
+        
+        #shows highest crime rate with their types
+        crime_type_cols = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 'Dacoity', 'Robbery', 
+                  'Arson', 'Hurt', 'Prevention of atrocities (POA) Act', 'Protection of Civil Rights (PCR) Act', 
+                  'Other Crimes Against SCs']
+        crimes_type = df[crime_type_cols].sum()
+        top_crimes = crimes_type.nlargest(5)
+        fig = plt.figure(figsize=(10, 8))
+        plt.pie(top_crimes, labels=top_crimes.index, autopct='%1.1f%%', startangle=140)
+        plt.title("Top 5 Crime Types with Highest Occurrences")
         plt.tight_layout()
         st.pyplot(fig)
