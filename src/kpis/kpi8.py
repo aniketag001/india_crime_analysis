@@ -5,8 +5,7 @@ import streamlit as st
 
 
 def kpi8(df):
-    """# Calculating Total Crimes as per State (from highest to lowest)"""
-
+    """# Calculating Total Crimes as per State (from highest to lowest)"""   
     state_crime = df.groupby('STATE/UT')['Total crimes'].sum().sort_values(ascending = False).reset_index()
     state_crime
 

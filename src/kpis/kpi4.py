@@ -59,13 +59,74 @@ def kpi4(population_df):
 
     print("\nCorrelation for 2011 between Population and Crimes:")
     print(correlation_2011['Population 2011'])
-    plt.figure(figsize=(12, 8))
-    sns.heatmap(correlation_2001, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
-    plt.title('Correlation Between Population and Crimes in 2001')
-    plt.show()
 
-    # Plot the correlation matrix for 2011
-    plt.figure(figsize=(12, 8))
-    sns.heatmap(correlation_2011, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
-    plt.title('Correlation Between Population and Crimes in 2011')
-    plt.show()
+    # Merge the df to get the population and crimes together
+    merged_df = pd.merge(df_population_2001_2011, df_crimes_pivot, 
+                           left_on='State or union territory', right_on='STATE/UT')
+
+    # Calculate crime rate per 100,000 population for 2001
+    merged_df['Murder Rate 2001'] = (merged_df['Murder 2001'] / merged_df['Population 2001']) * 100000
+    merged_df['Assault on women Rate 2001'] = (merged_df['Assault on women 2001'] / merged_df['Population 2001']) * 100000
+    merged_df['Kidnapping and Abduction Rate 2001'] = (merged_df['Kidnapping and Abduction 2001'] / merged_df['Population 2001']) * 100000
+    merged_df['Dacoity Rate 2001'] = (merged_df['Dacoity 2001'] / merged_df['Population 2001']) * 100000
+    merged_df['Robbery Rate 2001'] = (merged_df['Robbery 2001'] / merged_df['Population 2001']) * 100000
+    merged_df['Arson Rate 2001'] = (merged_df['Arson 2001'] / merged_df['Population 2001']) * 100000
+    merged_df['Hurt Rate 2001'] = (merged_df['Hurt 2001'] / merged_df['Population 2001']) * 100000
+    merged_df['Prevention of atrocities (POA) Act Rate 2001'] = (merged_df['Prevention of atrocities (POA) Act 2001'] / merged_df['Population 2001']) * 100000
+    merged_df['Protection of Civil Rights (PCR) Act Rate 2001'] = (merged_df['Protection of Civil Rights (PCR) Act 2001'] / merged_df['Population 2001']) * 100000
+    merged_df['Other Crimes Against SCs Rate 2001'] = (merged_df['Other Crimes Against SCs 2001'] / merged_df['Population 2001']) * 100000
+
+    # Calculate crime rate per 100,000 population for 2011
+    merged_df['Murder Rate 2011'] = (merged_df['Murder 2011'] / merged_df['Population 2011']) * 100000
+    merged_df['Assault on women Rate 2011'] = (merged_df['Assault on women 2011'] / merged_df['Population 2011']) * 100000
+    merged_df['Kidnapping and Abduction Rate 2011'] = (merged_df['Kidnapping and Abduction 2011'] / merged_df['Population 2011']) * 100000
+    merged_df['Dacoity Rate 2011'] = (merged_df['Dacoity 2011'] / merged_df['Population 2011']) * 100000
+    merged_df['Robbery Rate 2011'] = (merged_df['Robbery 2011'] / merged_df['Population 2011']) * 100000
+    merged_df['Arson Rate 2011'] = (merged_df['Arson 2011'] / merged_df['Population 2011']) * 100000
+    merged_df['Hurt Rate 2011'] = (merged_df['Hurt 2011'] / merged_df['Population 2011']) * 100000
+    merged_df['Prevention of atrocities (POA) Act Rate 2011'] = (merged_df['Prevention of atrocities (POA) Act 2011'] / merged_df['Population 2011']) * 100000
+    merged_df['Protection of Civil Rights (PCR) Act Rate 2011'] = (merged_df['Protection of Civil Rights (PCR) Act 2011'] / merged_df['Population 2011']) * 100000
+    merged_df['Other Crimes Against SCs Rate 2011'] = (merged_df['Other Crimes Against SCs 2011'] / merged_df['Population 2011']) * 100000
+
+    # Display the first few rows of the resulting dfframe
+    merged_df[['State or union territory', 'Murder Rate 2001', 'Assault on women Rate 2001', 
+                    'Kidnapping and Abduction Rate 2001', 'Dacoity Rate 2001', 'Robbery Rate 2001', 
+                    'Arson Rate 2001', 'Hurt Rate 2001', 'Prevention of atrocities (POA) Act Rate 2001', 
+                    'Protection of Civil Rights (PCR) Act Rate 2001', 'Other Crimes Against SCs Rate 2001',
+                    'Murder Rate 2011', 'Assault on women Rate 2011', 'Kidnapping and Abduction Rate 2011', 
+                    'Dacoity Rate 2011', 'Robbery Rate 2011', 'Arson Rate 2011', 'Hurt Rate 2011', 
+                    'Prevention of atrocities (POA) Act Rate 2011', 'Protection of Civil Rights (PCR) Act Rate 2011', 
+                    'Other Crimes Against SCs Rate 2011']]
+
+    sns.set(style="whitegrid")
+
+    # Define a list of the crime categories to plot
+    crime_columns_2001 = ['Murder Rate 2001', 'Assault on women Rate 2001', 'Kidnapping and Abduction Rate 2001', 
+                        'Dacoity Rate 2001', 'Robbery Rate 2001', 'Arson Rate 2001', 'Hurt Rate 2001', 
+                        'Prevention of atrocities (POA) Act Rate 2001', 'Protection of Civil Rights (PCR) Act Rate 2001', 
+                        'Other Crimes Against SCs Rate 2001']
+
+    crime_columns_2011 = ['Murder Rate 2011', 'Assault on women Rate 2011', 'Kidnapping and Abduction Rate 2011', 
+                        'Dacoity Rate 2011', 'Robbery Rate 2011', 'Arson Rate 2011', 'Hurt Rate 2011', 
+                        'Prevention of atrocities (POA) Act Rate 2011', 'Protection of Civil Rights (PCR) Act Rate 2011', 
+                        'Other Crimes Against SCs Rate 2011']
+
+    # Set the figure size
+    fig = plt.figure(figsize=(15, 8))
+
+    # Plot for 2001 and 2011 side by side
+    plt.subplot(1, 2, 1)  # First plot for 2001
+    merged_df[crime_columns_2001].mean().sort_values().plot(kind='barh', color='skyblue')
+    plt.title('Crime Rate per 100,000 Population - 2001')
+    plt.xlabel('Crime Rate per 100,000')
+    plt.ylabel('Crime Type')
+
+    plt.subplot(1, 2, 2)  # Second plot for 2011
+    merged_df[crime_columns_2011].mean().sort_values().plot(kind='barh', color='salmon')
+    plt.title('Crime Rate per 100,000 Population - 2011')
+    plt.xlabel('Crime Rate per 100,000')
+    plt.ylabel('Crime Type')
+
+    # Display the plot
+    plt.tight_layout()
+    st.pyplot(fig)

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 from utils import load_crime_data, load_literacy_data, load_population_data
-from static_visualization import kpi1, kpi2, kpi3, kpi4
+from kpis import kpi1, kpi2, kpi3, kpi4
 
 def static_insights():
         
@@ -16,6 +16,7 @@ def static_insights():
         kpi2(df)
         kpi3(literacy_df)
         kpi4(population_df)
+        kpi5(df)
 
 
 

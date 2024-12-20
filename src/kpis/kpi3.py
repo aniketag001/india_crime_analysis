@@ -79,8 +79,8 @@ def kpi3(literacy_df):
     fig_2011.add_trace(go.Scatter(x=line_x_2011.flatten(), y=line_y_2011, mode='lines', name='Regression Line', line=dict(color='red')))
 
     # Show the plots
-    fig_2001.show()
-    fig_2011.show()
+    st.pyplot(fig_2001)
+    st.pyplot(fig_2011)
 
 
 

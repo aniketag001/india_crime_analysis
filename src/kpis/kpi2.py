@@ -8,7 +8,7 @@ from utils import crime_columns
 def kpi2(df):
     yearly_crime = df.groupby('Year')[crime_columns].sum()
     correlation_matrix = yearly_crime.corr()
-    sns.heatmap(correlation_matrix, annot=True, cmap='viridis')
+    fig = sns.heatmap(correlation_matrix, annot=True, cmap='viridis')
     plt.title("Yearly Crime Type Correlations")
-    plt.show()
+    st.pyplot(fig)
 

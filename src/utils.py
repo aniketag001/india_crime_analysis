@@ -7,6 +7,10 @@ crime_columns = [
     'Other Crimes Against SCs'
 ]
 
+df = df.reset_index(drop = True)
+df["Total crimes"] = df.iloc[:, 3:13].sum(axis=1)
+
+
 def load_population_data():
     url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/india_literacy_rate.csv"
     df = pd.read_csv(url)

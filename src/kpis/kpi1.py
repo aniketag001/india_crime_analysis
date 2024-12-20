@@ -10,10 +10,10 @@ def kpi1(df):
     growth_rate_pivot = yearly_crime.pivot(index='STATE/UT', columns='Year', values='Growth Rate (%)')
 
     #Heatmap for quickly spotting growth patterns across states and years.
-    plt.figure(figsize=(12, 10))
+    fig = plt.figure(figsize=(12, 10))
     sns.heatmap(growth_rate_pivot, annot=True, cmap='coolwarm', fmt=".1f", linewidths=0.5)
     plt.title('Growth Rate of Total Crimes by State/UT Across Years', fontsize=16)
     plt.xlabel('Year', fontsize=12)
     plt.ylabel('State/UT', fontsize=12)
-    plt.show()
+    st.pyplot(fig)
 
