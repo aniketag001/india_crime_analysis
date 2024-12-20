@@ -14,7 +14,7 @@ def kpi9(df):
     for x in df.columns:
         if x == 'Year':
             continue  # Skip the 'Year' column
-        plt.figure(figsize=(10, 6))  # Create a new figure for each plot
+        fig = plt.figure(figsize=(10, 6))  # Create a new figure for each plot
         sns.lineplot(x=df['Year'], y=df[x], data=df, marker='o')  # Add markers for better visibility
         plt.title(f'Trend of {x} Over Years')  # Set the title for each plot
         plt.xlabel('Year')  # Set x-axis label
