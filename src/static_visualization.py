@@ -88,54 +88,25 @@ def static_insights():
         plt.show()
         st.pyplot(fig)
 
-        """# 5. Analysis for each Crime Type"""
+        """# 5. Analysis of Common Crime Type over Years"""
 
-        plt.figure(figsize=(12, 10))
-        sns.boxplot(data=df[all_crimes])
-        plt.title('Distribution of Different Crime Types')
-        plt.xticks(rotation=90)
-        plt.xlabel('Crime Type')
-        plt.ylabel('Crime Counts')
-        plt.grid()
-        plt.show()
-        st.pyplot(fig)
+        # Analysis of common crime type over years
+        crimes = ['Murder', 'Assault on women','Kidnapping and Abduction', 'Dacoity', 'Robbery', 'Arson', 'Hurt', 'Other Crimes Against SCs']
 
-        """# 6. Analysis of Common Crime Type over Years"""
+        plt.figure(figsize=(12, 8))
+        for crime in crimes:
+            sns.lineplot(data=df.groupby('Year')[crime].sum().reset_index(), x='Year', y=crime, marker='o', label=crime)
 
-        # List of crimes
-        crimes = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 
-                  'Dacoity', 'Robbery', 'Arson', 'Hurt', 'Other Crimes Against SCs']
-
-        # Categorize crimes into violent and non-violent
-        violent_crimes = ['Murder', 'Assault on women', 'Kidnapping and Abduction', 
-                          'Dacoity', 'Robbery', 'Arson', 'Hurt']
-
-        non_violent_crimes = ['Other Crimes Against SCs']
-
-
-        plt.figure(figsize=(14, 8))
-
-        # Plot violent crimes
-        for crime in violent_crimes:
-            sns.lineplot(data=df.groupby('Year')[crime].sum().reset_index(), 
-                         x='Year', y=crime, marker='o', label=crime, color='red')
-
-        # Plot non-violent crimes
-        for crime in non_violent_crimes:
-            sns.lineplot(data=df.groupby('Year')[crime].sum().reset_index(), 
-                         x='Year', y=crime, marker='o', label=crime, color='blue')
-
-        # Title and labels
         plt.title('Common Crime Types Over the Years')
         plt.xlabel('Year')
         plt.ylabel('Crime Counts')
-        plt.legend(title='Crime Types')
+        plt.legend()
         plt.grid()
         plt.show()
         st.pyplot(fig)
 
         df['STATE/UT'] = df['STATE/UT'].str.strip().str.title()
-        df['DISTRICT'] = df['DISTRICT'].str.strip().str.title()
+       
         
         name_mapping = {
             'A&N Islands': 'A & N Islands',
