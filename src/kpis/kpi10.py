@@ -12,7 +12,7 @@ def kpi10(df):
 
     # Visualise  Prevention of atrocities (POA) Act and Protection of Civil Rights (PCR) Act over years
 
-    plt.figure(figsize=(10, 7))
+    fig=plt.figure(figsize=(10, 7))
 
     sns.lineplot(data=rights, x="Year", y="Protection of Civil Rights (PCR) Act", marker='o', label="PCR Act", color='orange', linewidth=2.5, markersize=10)
     sns.lineplot(data=rights, x="Year", y="Prevention of atrocities (POA) Act", marker='*', label="POA Act", color='green', linewidth=2.5, markersize=13)
