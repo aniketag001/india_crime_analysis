@@ -249,7 +249,7 @@ def static_insights():
         total_crimes_year = df.groupby('Year')[crime_type_cols].sum().sum(axis=1)
 
         # Create a bar chart to visualize crime trends over years
-        plt.figure(figsize=(10, 6))
+        fig = plt.figure(figsize=(10, 6))
         plt.bar(total_crimes_year.index, total_crimes_year.values)
         plt.xlabel('Year')
         plt.ylabel('Total Crimes')
@@ -264,7 +264,7 @@ def static_insights():
                   'Other Crimes Against SCs']
         crimes_type = df[crime_type_cols].sum()
         top_crimes = crimes_type.nlargest(5)
-        plt.figure(figsize=(10, 8))
+        fig = plt.figure(figsize=(10, 8))
         plt.pie(top_crimes, labels=top_crimes.index, autopct='%1.1f%%', startangle=140)
         plt.title("Top 5 Crime Types with Highest Occurrences")
         plt.tight_layout()
