@@ -5,15 +5,15 @@ import streamlit as st
 
 
 def kpi7(df):
-    """# Total crimes against SCs as per year"""
+    """# Total Crime over Years"""
 
-    yearly_crime_against_SC = df.groupby('Year')['Other Crimes Against SCs'].sum().reset_index()
-    yearly_crime_against_SC
+    yearly_crime = df.groupby('Year')['Total crimes'].sum().reset_index()
+    yearly_crime
 
     # Visualise total crime over years
     fig = plt.figure(figsize=(10, 7))
-    sns.lineplot(x='Year', y='Other Crimes Against SCs', data=yearly_crime_against_SC, color='purple' , marker='o')
-    plt.title('Total crimes against SCs as per year')
+    sns.lineplot(x='Year', y='Total crimes', data=yearly_crime, color='teal' , marker='o')
+    plt.title('Total Crime Over Years')
     plt.xlabel('Year')
-    plt.ylabel('Other Crimes Against SCs')
+    plt.ylabel('Total Crimes')
     st.pyplot(fig)
