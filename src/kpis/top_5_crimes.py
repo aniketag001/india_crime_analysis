@@ -5,7 +5,7 @@ from utils import fig_width, fig_height
 
 
 def top_5_crimes(df, population_df, literacy_df):
-   st.subheader("Top_5_Crimes in India")
+    st.subheader("Top_5_Crimes in India")
     st.text("Author: Aniket Agarkar")
     st.write(
         """
