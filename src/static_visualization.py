@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
-
 import matplotlib.pyplot as plt
-
 import seaborn as sns
 import streamlit as st
 from utils import load_crime_data, load_literacy_data, load_population_data
@@ -13,9 +11,6 @@ from kpis.growth_rate_of_total_crimes import growth_rate_of_total_crimes
 from kpis.yearly_crime_type_correlations import yearly_crime_type_correlations
 from kpis.crime_rate_per_1_lakh_population import crime_rate_per_1_lakh_population
 from kpis.total_crimes_across_india import total_crimes_across_india
-
-#from kpis.crime_trends_over_years import crime_trends_over_years
-from kpis.total_crimes_accross_india import total_crimes_accross_india
 from kpis.top_5_crimes import top_5_crimes
 def static_insights(): 
 
@@ -33,7 +28,6 @@ def static_insights():
                 growth_rate_of_total_crimes,
                 crime_rates_by_category,
                 crime_rate_per_1_lakh_population,
-                #crime_trends_over_years
                 top_5_crimes
                 ]
 

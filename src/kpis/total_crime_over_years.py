@@ -9,8 +9,6 @@ def total_crime_over_years(df, population_df, literacy_df):
     
     st.subheader("Total Crime Over Year")
     st.text("Author: Sayanti Saha, Aniket Agarkar")
-
-    st.text("Author: Sayanti Saha")
     st.write(
         """
         The graph indicates notable fluctuations in crime rates over the years, with peaks in 2002 and 2012. 

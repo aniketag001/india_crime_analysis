@@ -17,12 +17,12 @@ def dynamic_insights():
  
 
     charts = [
-        #     crime_types_and_count_over_years,
-        #     crime_literacy_rate, 
-        #     each_crime_category_over_years,
-        #     state_with_top_5_crimes,
+            crime_types_and_count_over_years,
+            crime_literacy_rate, 
+            each_crime_category_over_years,
+            state_with_top_5_crimes,
             rural_urban_crime_comparison,
-        #     crime_trends_over_years, 
+            crime_trends_over_years, 
             ]
 
     for chart in charts:

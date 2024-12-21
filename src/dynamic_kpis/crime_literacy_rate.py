@@ -16,12 +16,8 @@ def crime_literacy_rate(df, population_df, literacy_df):
     col1, col2 = st.columns(2)
     with col1:    
         print(literacy_df.columns)
-        literacy_df.loc[:, "Country/ States/ Union Territories Name"] = literacy_df["Country/ States/ Union Territories Name"
-    ].replace(state_name_mapping)
-        literacy_df = literacy_df[
-            literacy_df["Country/ States/ Union Territories Name"] != "INDIA"
-        ]
 
+    
         print(literacy_df["Country/ States/ Union Territories Name"].unique())
         # Step 1: Calculate total crimes for 2001 and 2011
         crimes_2001 = df[df["Year"] == 2001].groupby("STATE/UT")["Total crimes"].sum().reset_index()
