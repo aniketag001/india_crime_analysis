@@ -31,7 +31,7 @@ def static_insights():
                 crime_rates_by_category, 
                 total_crime_over_years,
                 crime_rate_per_1_lakh_population,
-                crime_trends_over_years
+                crime_trends_over_years``
                 ]
 
         for chart in charts:
