@@ -6,6 +6,7 @@ import pandas as pd
 from utils import crime_columns, fig_width, fig_height, state_name_mapping
 
 def crime_rate_per_1_lakh_population(df, population_df, literacy_df):
+    print(df)
     st.subheader("Crime Rate Per 100,000 Population")
     st.text("Author: Sakshi Jaiswal")
     st.write(
@@ -18,7 +19,7 @@ def crime_rate_per_1_lakh_population(df, population_df, literacy_df):
     )
     population_df.loc[:, "State or union territory"] = population_df["State or union territory"].replace(state_name_mapping)
     population_df = population_df[  
-        population_df["State or union territory"] != "INDIA"
+        population_df["State or union territory"] != "India"
     ]
     print(population_df["State or union territory"].unique())
     # Extract the unique state names from the crime dfset (in the same order)
@@ -51,7 +52,8 @@ def crime_rate_per_1_lakh_population(df, population_df, literacy_df):
     # Merge the population df with the crime df on 'State or union territory'
     merged_df = pd.merge(df_population_2001_2011, df_crimes_pivot, 
                         left_on='State or union territory', right_on='STATE/UT')
-
+    print("hhhh")
+    print(merged_df)
     # Now, we will calculate the correlation between population in 2001 and 2011 with crime statistics
     correlation_2001 = merged_df[['Population 2001', 'Murder 2001', 'Assault on women 2001', 'Kidnapping and Abduction 2001', 
                                     'Dacoity 2001', 'Robbery 2001', 'Arson 2001', 'Hurt 2001', 
@@ -127,6 +129,7 @@ def crime_rate_per_1_lakh_population(df, population_df, literacy_df):
     # Plot for 2001 and 2011 side by side
     plt.subplot(1, 2, 1)  # First plot for 2001
     merged_df[crime_columns_2001].mean().sort_values().plot(kind='barh', color='skyblue')
+    print(merged_df)
     plt.title('Crime Rate per 100,000 Population - 2001')
     plt.xlabel('Crime Rate per 100,000')
     plt.ylabel('Crime Type')

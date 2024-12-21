@@ -37,7 +37,7 @@ def each_crime_category_over_years(df, population_df, literacy_df):
 
     # Function to update the plot based on selected year and crime type
     def update_plot(crime_type):
-        fig = plt.figure(figsize=(10, 6))
+        fig = plt.figure(figsize=(fig_width, fig_height))
         sns.lineplot(x=df['Year'], y=df[crime_type],  data=df, marker='o', color=color_mapping[crime_type])
         plt.title(f'Trend of {crime_type} Over Years')
         plt.xlabel('Year')

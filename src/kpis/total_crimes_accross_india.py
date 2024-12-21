@@ -5,11 +5,12 @@ from utils import load_crime_data
 
 def total_crimes_accross_india(df, population_df, literacy_df):
 
+    df2 = df.copy(deep=True)
     st.subheader("Total Crimes Accross India")
     st.text("Author: Sakshi Jaiswal")
 
-    df['STATE/UT'] = df['STATE/UT'].str.title()
-    df = df.groupby('STATE/UT').agg(
+    df2['STATE/UT'] = df2['STATE/UT'].str.title()
+    df2 = df2.groupby('STATE/UT').agg(
         Total_Crime=('Total crimes', 'sum')
     ).reset_index() 
     
@@ -18,8 +19,8 @@ def total_crimes_accross_india(df, population_df, literacy_df):
         geojson="https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson",
         featureidkey='properties.ST_NM',
         locationmode='geojson-id',
-        locations=df['STATE/UT'],
-        z=df['Total_Crime'],
+        locations=df2['STATE/UT'],
+        z=df2['Total_Crime'],
 
         autocolorscale=False,
         colorscale='Reds',
