@@ -5,7 +5,7 @@ import streamlit as st
 import altair as alt
 from utils import fig_width, fig_height
 
-def each_crime_category_over_years(df):
+def each_crime_category_over_years(df, population_df, literacy_df)):
  
  
     st.subheader("Each Crime Category over Years")
