@@ -24,6 +24,11 @@ def load_literacy_data():
     url = "https://raw.githubusercontent.com/sakshitechworld/india_crime_analysis/main/data/india_literacy_rate.csv"
     df = pd.read_csv(url)
     df = pd.DataFrame(df)
+    df["Country/ States/ Union Territories Name"] = df["Country/ States/ Union Territories Name"
+    ].replace(state_name_mapping)
+    df = df[
+            df["Country/ States/ Union Territories Name"] != "INDIA"
+        ]
     return df
 
 def load_crime_data():

@@ -11,10 +11,10 @@ def crime_rate_per_1_lakh_population(df, population_df, literacy_df):
     st.text("Author: Sakshi Jaiswal")
     st.write(
         """
-        This chart represents the values of different categories. 
-        Each bar corresponds to a specific category and its respective value. 
-        The data shows that Category D has the highest value, while Category A has the lowest. 
-        Such visualizations are helpful for comparing categorical data.
+       The charts highlight the changing trends in crime rates per 100,000 population in India from 2001 to 2011, reflecting both progress and persistent challenges. 
+       Crimes such as "Assault on Women" and overall "Other Crimes Against SCs" shows upward trends, pointing to growing concerns around ongoing caste-based discrimination and gender-based violence. It can also be seen that there is not much improvement in crimes like " Kidnapping and Abduction" and "Murder". However, some crimes, like "Robbery", "Protection of Civil Rights (PCR) Act", and "Hurt" have decreased, suggesting improvements in law enforcement or social conditions in these areas.
+
+This mixed pattern emphasizes the complexity of crime dynamics. While reductions in specific crimes highlight the success of targeted interventions, the rise in others—especially caste- and gender-related violence—demands urgent policy reforms, stricter enforcement of laws, and increased public awareness.
         """
     )
     population_df.loc[:, "State or union territory"] = population_df["State or union territory"].replace(state_name_mapping)
@@ -52,7 +52,7 @@ def crime_rate_per_1_lakh_population(df, population_df, literacy_df):
     # Merge the population df with the crime df on 'State or union territory'
     merged_df = pd.merge(df_population_2001_2011, df_crimes_pivot, 
                         left_on='State or union territory', right_on='STATE/UT')
-    print("hhhh")
+
     print(merged_df)
     # Now, we will calculate the correlation between population in 2001 and 2011 with crime statistics
     correlation_2001 = merged_df[['Population 2001', 'Murder 2001', 'Assault on women 2001', 'Kidnapping and Abduction 2001', 

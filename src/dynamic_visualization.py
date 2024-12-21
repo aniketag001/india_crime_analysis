@@ -5,6 +5,7 @@ from dynamic_kpis.each_crime_category_over_years import each_crime_category_over
 from dynamic_kpis.crime_types_and_count_over_years import crime_types_and_count_over_years
 from dynamic_kpis.state_with_top_5_crimes import state_with_top_5_crimes
 from dynamic_kpis.crime_literacy_rate import crime_literacy_rate
+from dynamic_kpis.rural_urban_crime_comparison import rural_urban_crime_comparison
 import streamlit as st
 
 
@@ -16,15 +17,16 @@ def dynamic_insights():
  
 
     charts = [
-            crime_literacy_rate, 
-            state_with_top_5_crimes,
-            crime_trends_over_years, 
-            crime_types_and_count_over_years,
-            each_crime_category_over_years
+        #     crime_types_and_count_over_years,
+        #     crime_literacy_rate, 
+        #     each_crime_category_over_years,
+        #     state_with_top_5_crimes,
+            rural_urban_crime_comparison,
+        #     crime_trends_over_years, 
             ]
 
     for chart in charts:
-            col1, col2 = st.columns([2, 1])
+            col1, col2 = st.columns([2.5, 0.5])
             with col1:
                     chart(df, population_df, literacy_df)
             with col2:

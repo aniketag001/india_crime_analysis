@@ -10,8 +10,8 @@ from utils import crime_columns, fig_width, fig_height
 def top_10_states_highest_crime(df, population_df, literacy_df):
     
     st.subheader("Top 10 States with Highest Crimes")
-
     st.text("Author: Sayanti Saha")
+
 
 
     state_crime = df.groupby('STATE/UT')['Total crimes'].sum().sort_values(ascending = False).reset_index()

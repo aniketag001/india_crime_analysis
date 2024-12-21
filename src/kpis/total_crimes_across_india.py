@@ -3,12 +3,18 @@ import folium
 import plotly.graph_objects as go
 from utils import load_crime_data
 
-def total_crimes_accross_india(df, population_df, literacy_df):
+def total_crimes_across_india(df, population_df, literacy_df):
 
     df2 = df.copy(deep=True)
-    st.subheader("Total Crimes Accross India")
+    st.subheader("Total Crimes Across India")
     st.text("Author: Sakshi Jaiswal")
-
+    st.write(
+        """
+        This EDA project investigates the spatial distribution of reported caste-based hate crimes across India as of 2012.
+        A heatmap visualization reveals significant regional disparities, with states in northern and central India exhibiting higher crime rates compared to southern and eastern regions. 
+        This analysis highlights the urgent need for targeted interventions to address the root causes of caste-based discrimination and violence in regions with high crime rates.
+        """
+    )
     df2['STATE/UT'] = df2['STATE/UT'].str.title()
     df2 = df2.groupby('STATE/UT').agg(
         Total_Crime=('Total crimes', 'sum')

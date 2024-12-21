@@ -8,7 +8,7 @@ from utils import fig_width, fig_height
 def total_crime_over_years(df, population_df, literacy_df):
     
     st.subheader("Total Crime Over Year")
-    st.text("Author: Sayanti Saha")
+    st.text("Author: Sayanti Saha, Aniket Agarkar")
 
     yearly_crime = df.groupby('Year')['Total crimes'].sum().reset_index()
     yearly_crime
