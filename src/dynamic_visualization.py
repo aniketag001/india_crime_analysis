@@ -6,6 +6,7 @@ from dynamic_kpis.crime_types_and_count_over_years import crime_types_and_count_
 from dynamic_kpis.state_with_top_5_crimes import state_with_top_5_crimes
 from dynamic_kpis.crime_literacy_rate import crime_literacy_rate
 import streamlit as st
+import altair as alt
 
 def dynamic_insights():
         
@@ -18,7 +19,8 @@ def dynamic_insights():
             crime_literacy_rate, 
             state_with_top_5_crimes,
             crime_trends_over_years, 
-            crime_types_and_count_over_years
+            crime_types_and_count_over_years,
+            each_crime_category_over_years
             ]
 
     for chart in charts:
