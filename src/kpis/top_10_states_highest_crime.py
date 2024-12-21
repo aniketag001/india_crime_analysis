@@ -13,6 +13,16 @@ def top_10_states_highest_crime(df, population_df, literacy_df):
 
     st.text("Author: Sayanti Saha")
 
+    st.write(
+        """
+        This chart provides a visual representation of the crime rates across different states in India.
+        This represents overall crime rate in each state, as population density and the number of crimes reported.
+        Analyzing the data over time can reveal whether crime rates are increasing or decreasing in specific states.
+        The chart highlights the states with the highest number of reported crimes. 
+        Uttar Pradesh leads with the highest crime rate.
+        """
+    )
+
 
     state_crime = df.groupby('STATE/UT')['Total crimes'].sum().sort_values(ascending = False).reset_index()
     state_crime
