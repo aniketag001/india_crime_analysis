@@ -11,7 +11,7 @@ import pandas as pd
 
 def crime_literacy_rate(df, population_df, literacy_df):
     
-    st.subheader("Correlation Between Crime Rates and Literacy Rate")
+    st.subheader("2. Correlation Between Crime Rates and Literacy Rate")
     st.text("Author: Sakshi Jaiswal")
     col1, col2 = st.columns(2)
     with col1:    

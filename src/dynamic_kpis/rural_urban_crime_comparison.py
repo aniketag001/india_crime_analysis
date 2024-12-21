@@ -7,7 +7,7 @@ import ipywidgets as widgets
 from ipywidgets import interactive
 
 def rural_urban_crime_comparison(df, population_df, literacy_df):
-    st.subheader("Crimes of Rural Urban Comparison")
+    st.subheader("5. Crimes of Rural Urban Comparison")
     st.text("Author: Sakshi Jaiswal")
 
     crimes_2001 = df[df["Year"] == 2001].groupby("STATE/UT")["Total crimes"].sum().reset_index()

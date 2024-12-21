@@ -7,7 +7,7 @@ from utils import crime_columns, fig_width, fig_height, state_name_mapping
 
 def crime_rate_per_1_lakh_population(df, population_df, literacy_df):
     print(df)
-    st.subheader("Crime Rate Per 100,000 Population")
+    st.subheader("7. Crime Rate Per 100,000 Population")
     st.text("Author: Sakshi Jaiswal")
     st.write(
         """

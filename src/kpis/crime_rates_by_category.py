@@ -5,7 +5,7 @@ import streamlit as st
 from utils import crime_columns, fig_width, fig_height
 
 def crime_rates_by_category(df, population_df, literacy_df):
-    st.subheader("Crime Rates By Category")
+    st.subheader("6. Crime Rates By Category")
     st.text("Author: Sayanti Saha")
 
     st.write(

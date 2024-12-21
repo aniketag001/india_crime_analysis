@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 def crime_types_and_count_over_years(df, population_df, literacy_df):
  
-    st.subheader("Crime Types & Count Over Years")
+    st.subheader("1. Crime Types & Count Over Years")
     st.text("Author: Aniket Agarkar")
  
     unique_states = df['STATE/UT'].unique()
@@ -16,8 +16,8 @@ def crime_types_and_count_over_years(df, population_df, literacy_df):
     max_year = df['Year'].max()
 
     # Create dropdown widget for state selection
-    selected_state = st.selectbox("Select State To Analyse Accross States", options=unique_states)  
-    selected_year = st.slider("Select Year To Analyse Accross States", min_value=min_year, max_value=max_year, value=min_year, step=1)
+    selected_state = st.selectbox("Select a State  ", options=unique_states)  
+    selected_year = st.slider("Slide to Select Year", min_value=min_year, max_value=max_year, value=min_year, step=1)
     state_df = df[(df['STATE/UT'] == selected_state) & (df['Year'] == selected_year)]
     total_crimes_per_year = state_df[crime_columns].sum()
 

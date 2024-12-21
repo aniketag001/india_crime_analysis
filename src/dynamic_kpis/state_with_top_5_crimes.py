@@ -8,7 +8,7 @@ from utils import fig_width, fig_height
 
 def state_with_top_5_crimes(df, population_df, literacy_df):
  
-    st.subheader("State With Top 5 Crimes")
+    st.subheader("4. State With Top 5 Crimes")
     st.text("Author: Aniket Agarkar") 
     unique_states = df['STATE/UT'].unique()
     selected_state = st.selectbox("Select State", options=unique_states)

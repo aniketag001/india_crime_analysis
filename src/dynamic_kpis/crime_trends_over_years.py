@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 def crime_trends_over_years(df, population_df, literacy_df):
  
-    st.subheader("Each Crime Category over Years")
+    st.subheader("6. Each Crime Category over Years")
     st.text("Author: Aniket Agarkar")
     unique_states = df['STATE/UT'].unique()
 

@@ -5,13 +5,13 @@ from utils import fig_width, fig_height
 
 
 def top_5_crimes(df, population_df, literacy_df):
-    st.subheader("Top_5_Crimes in India")
+    st.subheader("8. Top 5 Crimes in India")
     st.text("Author: Aniket Agarkar")
     st.write(
         """
        This pie chart visualizes the distribution of the top 5 crime types based on their frequency of occurrence. 
        It provides a quick overview of the relative proportions of each crime type within the dataset.The Pie Chart
-       shows Dominance of "Other Crimes Against SCs" category with the largest portion of the pie chart,
+       shows dominance of "Other Crimes Against SCs" category with the largest portion of the pie chart,
        with 44.7% of the top 5 crimes.
         """
     )

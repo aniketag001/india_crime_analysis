@@ -8,7 +8,7 @@ from utils import fig_width, fig_height
 def each_crime_category_over_years(df, population_df, literacy_df):
  
  
-    st.subheader("Each Crime Category over Years")
+    st.subheader("3. Each Crime Category over Years")
     st.text("Author: Sayanti Saha")
 
  
@@ -28,8 +28,7 @@ def each_crime_category_over_years(df, population_df, literacy_df):
         'Protection of Civil Rights (PCR) Act': 'magenta',
         'Other Crimes Against SCs': 'black',
     }
-    # Streamlit app layout
-    st.title("Crime Trends Over Years")
+
 
     # Create a dropdown for selecting the crime type
     crime_type = st.selectbox("Select Crime Type:", df.columns[1:])  # Exclude 'Year' from options

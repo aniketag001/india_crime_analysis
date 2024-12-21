@@ -6,7 +6,7 @@ from utils import load_crime_data
 def total_crimes_across_india(df, population_df, literacy_df):
 
     df2 = df.copy(deep=True)
-    st.subheader("Total Crimes Across India")
+    st.subheader("1. Total Crimes Across India")
     st.text("Author: Sakshi Jaiswal")
     st.write(
         """

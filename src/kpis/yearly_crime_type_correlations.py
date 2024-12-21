@@ -6,7 +6,7 @@ from utils import crime_columns, fig_width, fig_height
 
 
 def yearly_crime_type_correlations(df, population_df, literacy_df):
-    st.subheader("Yearly Crime Type Correlations")
+    st.subheader("3. Yearly Crime Type Correlations")
     st.text("Author: Sakshi Jaiswal")
     st.write(
         """

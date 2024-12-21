@@ -7,7 +7,7 @@ st.set_page_config(
     page_icon="🌟",
     layout="wide",  # Ensures the app takes up more horizontal space
 )
-
+st.title("Caste Based Crime Analysis")
 kpis, dashboard = st.tabs(["KPIs", "Dashboard"])
 
 import streamlit as st
