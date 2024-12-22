@@ -1,5 +1,6 @@
-from static_visualization import static_insights
-from dynamic_visualization import dynamic_insights
+from kpi_visualization import kpi_insights
+
+from dashboard_visualization import dashboard_insights
 import streamlit as st
 
 st.set_page_config(
@@ -7,17 +8,33 @@ st.set_page_config(
     page_icon="🌟",
     layout="wide",  # Ensures the app takes up more horizontal space
 )
+
 st.title("Caste Based Crime Analysis")
+
+
 kpis, dashboard = st.tabs(["KPIs", "Dashboard"])
 
 import streamlit as st
+
 import folium
 import pandas as pd
+
+
 from geopy.geocoders import Nominatim
+
+
 from folium.plugins import HeatMap
 
+
+
 with kpis:
-    static_insights()
+
+    kpi_insights()
+
+
 with dashboard:
-    dynamic_insights()
+
+    dashboard_insights()
+
+
 

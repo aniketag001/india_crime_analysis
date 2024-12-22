@@ -15,10 +15,10 @@ def crime_literacy_rate(df, population_df, literacy_df):
     st.text("Author: Sakshi Jaiswal")
     col1, col2 = st.columns(2)
     with col1:    
-        print(literacy_df.columns)
+        # print(literacy_df.columns)
 
     
-        print(literacy_df["Country/ States/ Union Territories Name"].unique())
+        # print(literacy_df["Country/ States/ Union Territories Name"].unique())
         # Step 1: Calculate total crimes for 2001 and 2011
         crimes_2001 = df[df["Year"] == 2001].groupby("STATE/UT")["Total crimes"].sum().reset_index()
         crimes_2011 = df[df["Year"] == 2011].groupby("STATE/UT")["Total crimes"].sum().reset_index()
@@ -47,8 +47,8 @@ def crime_literacy_rate(df, population_df, literacy_df):
         correlation_2011 = merged_df["LR-2011"].corr(merged_df["Total crimes 2011"])
 
         # Display the results
-        print("Correlation between Literacy Rate (2001) and Total crimes (2001):", correlation_2001)
-        print("Correlation between Literacy Rate (2011) and Total crimes (2011):", correlation_2011)
+        # print("Correlation between Literacy Rate (2001) and Total crimes (2001):", correlation_2001)
+        # print("Correlation between Literacy Rate (2011) and Total crimes (2011):", correlation_2011)
     
 
         # Create scatter plots with regression lines for 2001 and 2011
