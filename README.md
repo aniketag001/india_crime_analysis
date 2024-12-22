@@ -71,5 +71,5 @@ streamlit run src/app.py
 <br>
 
 ### Deployment | How does the code get deployed to Streamlit cloud?
-Streamlit cloud is connected with `main` branch of github, hence as soon as the code is committed in the `main` branch, it will be deployed to the cloud and the app will be available at https://crimeinsights.streamlit.app
+Streamlit cloud is connected with `main` branch of github, hence as soon as the code is committed in the `main` branch, it will be deployed to the cloud and the app will be available at https://crimeinsight.streamlit.app
 <br>

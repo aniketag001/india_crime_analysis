@@ -28,12 +28,9 @@ from folium.plugins import HeatMap
 
 
 with kpis:
-
     kpi_insights()
 
-
 with dashboard:
-
     dashboard_insights()
 
 
