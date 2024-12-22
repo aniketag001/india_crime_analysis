@@ -1,51 +1,54 @@
-# India Crime Analysis
+# **Caste-Based Crime Insights in India**
 
-Visit https://crimeinsights.streamlit.app to check the analysis
+## **Introduction**  
+This project provides a comprehensive platform for analyzing caste-based hate crimes across India. It visualizes crime patterns over the years, highlights correlations, and allows users to explore state-wise and category-wise data through an interactive and user-friendly interface. The platform aims to help identify areas requiring intervention to combat caste-based discrimination effectively.
 
-Dataset descripition:
-1. STATE/UT -
-Represents the state name and union teritory name if it is a union teritory (data type-nominal).
+---
 
-2. Year -
-Specifies to which year data belongs (data type-ordinal).
+## **Project Type**  
+**Fullstack**  
 
-3. Murder -
-The number of murders that had happened during the year (data type-continuous).
+---
 
-4. Assault on women -
-A threat or attempt to inflict offensive physical contact or bodily harm on women (data type-continuous).
+## **Deployed App**  
+- **Frontend:** [Website](https://crimeinsight.streamlit.app)  
+- **Backend:** Not Applicable (handled via Streamlit)  
+- **Database:** CSV files used as the primary data source  
 
-5. Kidnapping and Abduction -
-To take away a person by force (data type-continuous).
+---
 
-6. Dacoity -
-NUmber of acts of violent robbery committed by an armed gang (data type-contiuous).
+## **Directory Structure**  
+```
+project/
+├─ data/
+│  ├─ crime_by_state_rt.csv
+│  ├─ india_literacy_rate.csv
+│  ├─ population_of_india.csv
+├─ src/
+│  ├─ app.py
+│  ├─ dashboard_visualization.py (Interactive dashboard enabler code via Streamlit)
+|  ├─ kpi_visualization.py (Key Performance Indicators metrics calculation code)
+|  ├─ utils.py (Data handeling functions)
+```
 
-7. Robbery -
-The action of taking property unlawfully from a person or threat of force (data type-continuous).
+## Video Walkthrough of the Project
+Attach a very short video walkthrough of all features (1–3 minutes).
 
-8. Arson -
-The criminal act of deliberately setting fire to property (data type- continuous).
+## Video Walkthrough of the Codebase
+Attach a very short video walkthrough of the codebase (1–5 minutes).
 
-9. Hurt -
-Hurting a person (data type-continuous).
+## Features
+List out the key features of your application:
+- Feature 1
+- Feature 2
+- Feature 3
 
-10. POA Act -
-Crimes that are registered under POA act (data type-continuous).
+## Design Decisions or Assumptions
+List your design decisions and assumptions.
 
-11. PCR Act -
-Crimes that are registered under PCR act (data type-continuous).
+## Installation & Getting Started | Setup the project in VS Code from Github
+Detailed instructions on how to install, configure, and get the project running. For Backend/Fullstack projects, guide the reviewer on how to check the MongoDB schema, etc.
 
-12. Other crimes against sc's -
-Other crimes that are registered against SC's. These have arisen either as a result of breaking of several laws in the above incidences or are unique on their own (data type-continuous).
-
-13. LR-2001 -
-The literacy rate for a particular state as reported by the 2001 census.
-
-14. LR-2011 -
-The literacy rate for a particular state as reported by the 2011 census.
-
-## Setup the project in VS Code from Github
 ### How to clone a github repository
 ```
 git clone https://github.com/sakshitechworld/india_crime_analysis.git
