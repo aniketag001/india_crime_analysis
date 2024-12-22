@@ -38,16 +38,19 @@ Attach a very short video walkthrough of all features (1–3 minutes).
 Attach a very short video walkthrough of the codebase (1–5 minutes).
 
 ## Features
-List out the key features of your application:
-- Feature 1
-- Feature 2
-- Feature 3
+- Dynamic Visualizations: 
+Interactive charts, graphs, and heatmaps to analyze crime data effectively.
+- Filter and Search Options: 
+Advanced filters by year, state, crime category, and literacy rates for tailored insights.
+- Comprehensive KPIs Dashboard: 
+Key metrics and trends summarized for quick decision-making.
+
 
 ## Design Decisions or Assumptions
-List your design decisions and assumptions.
+The project assumes the use of CSV files as the primary data source, with Pandas for data processing and Streamlit for a user-friendly, interactive frontend. It relies on static data that can be visualized with Plotly, Matplotlib, and Seaborn, providing state- and category-wise analysis. The platform is designed for users with basic data analysis knowledge, offering easy exploration of caste-based crime trends and key performance indicators. Deployment is handled through Streamlit Cloud, ensuring automatic updates via GitHub commits.
 
 ## Installation & Getting Started | Setup the project in VS Code from Github
-Detailed instructions on how to install, configure, and get the project running. For Backend/Fullstack projects, guide the reviewer on how to check the MongoDB schema, etc.
+Detailed instructions on how to install, configure, and get the project running:
 
 ### How to clone a github repository
 ```
@@ -72,4 +75,13 @@ streamlit run src/app.py
 
 ### Deployment | How does the code get deployed to Streamlit cloud?
 Streamlit cloud is connected with `main` branch of github, hence as soon as the code is committed in the `main` branch, it will be deployed to the cloud and the app will be available at https://crimeinsight.streamlit.app
+<br>
+
+## Technology Stack
+```
+Frontend: Streamlit
+Data Processing: Pandas
+Visualization: Plotly, Matplotlib, Seaborn
+Deployment: Streamlit Cloud
+```
 <br>
