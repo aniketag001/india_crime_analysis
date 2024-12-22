@@ -32,10 +32,10 @@ project/
 ```
 
 ## Video Walkthrough of the Project
-Attach a very short video walkthrough of all features (1–3 minutes).
+https://drive.google.com/file/d/1UZh5Zq7117zKJ76E_gt26Be-fc3s_QZV/view?usp=sharing
 
 ## Video Walkthrough of the Codebase
-Attach a very short video walkthrough of the codebase (1–5 minutes).
+https://drive.google.com/file/d/1yX5H7YMAGqWXK77g_5EdYLGsRKLS2G7C/view?usp=sharing
 
 ## Features
 - Dynamic Visualizations: 
